@@ -1,49 +1,72 @@
+<html>
+<head>
+<title>Project 1</title>
+</head>
+<body>
 <?php
 
-//menu
-	echo '<a href="?page=php">PHP Menu</a><br>';
-	echo '<a href="?page=xml">XML Menu</a><br>';
-	echo '<a href="?page=java">Java Menu</a><br>';
-	echo '<a href="?page=python">Python Menu</a><br>';
+class csvlists {
+        public $mainlist;
+        public $prettyNames;
+        public $names;
 
-//initiates object based on request	
-	$obj = new $_REQUEST['page'];
+        public function csvwork($mainlist, $prettyNames){
 
-// main page class definition with base constructo
-	class page{
-	
-		function __construct(){
-			echo 'I am the: '.$_REQUEST['page'].' page!';
-		} // end of __construct 
-	} // end of class page
+                ini_set('auto_detect_line_endings',TRUE);
 
-	//php class definition
-	class php extends page {
-	
-		function __construct(){
-			echo '<br>look ma, I am the: '.$_REQUEST['page'].' page!';
-		}// end of php construct
-	}// end of php class
-	
-	//xml class definition
-	class xml extends page {
-	
-		function __construct(){
-			echo 'how you doin,  I am the: '.$_REQUEST['page'].' page!';
-		}// end of xml construct
-	}//end of xml class
-	
-	class java extends page {
-	
-		function __construct(){
-			echo 'hey hey hey, its the '.$_REQUEST['page'].' page!';
-		}//end of java construct
-	}//end of java class
-	
-	class python extends page {
-	
-		function __construct(){
-			echo 'whoot you are looking at the '.$_REQUEST['page'].' page.';
-		}//end of python construt
-	}//end of python class
+
+                if (($handle = fopen($mainlist, "r")) !== FALSE) {
+
+                $title = fgetcsv($handle);
+
+                $records = array();
+                $names = array();
+                while($row = fgetcsv($handle)){
+                        $arr = array();
+                        foreach($title as $c => $col)
+                                $arr[$col] = $row[$c];
+                        $records[] = $arr;
+                        $names[] = $row[1];
+                }
+
+                fclose($handle);
+                }
+
+                if(empty($_GET)) {
+
+                        echo '<h1>  Integrated Post Secondary Educational Data System </h1>';
+                        echo '<h3> For more information on a school click the name.</h3>';
+                        echo '<br>';
+
+                        foreach($records as $record) {
+                                $i++;
+                                $entryReq = $i - 1;
+                                echo $i.': ';
+
+                        print_r('<a href="http://web.njit.edu/~dmo7/is218/test/index.php?record=' . $entryReq . '">'.$names[$i-1].'</a>');
+                        echo '<br><br>';
+                        }
+                }
+ 
+                        $record = $records[$_GET['record']];
+      
+			echo "<table border='1'>";
+                 
+                        foreach($record as $key => $value) {
+                                echo "<tr>";
+                                echo "<th> $key </th> <td> $value </td>";
+                                echo "</tr>";
+                        }
+                        
+                        echo "</table>";
+                        
+        }
+}
+
+                                
+        $newfile = new csvlists();
+        $newfile-> csvwork('http://web.njit.edu/~dmo7/is218/test/hd2013.csv', true);
+                                
 ?>
+</body>
+</html>
