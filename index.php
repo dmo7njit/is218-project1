@@ -1,8 +1,10 @@
 <html>
 <head>
 <title>Project 1</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <?php
 
 class csvlists {

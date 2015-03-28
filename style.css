@@ -1,0 +1,18 @@
+body {
+  font-family: Ariel, helvetica, sans-serif;
+  background-color: #DCDCDC;
+}
+
+h3 {
+  color: #778899;
+}
+
+ a {
+  color: #708090;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
