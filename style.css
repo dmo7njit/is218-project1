@@ -3,9 +3,17 @@ body {
   background-color: #DCDCDC;
 }
 
+h1 {
+  border: 3px solid black;
+  padding: 3px;
+  background-color: white;
+  text-align: center;
+}
+
+
 h3 {
   color: #778899;
-}
+  }
 
  a {
   color: #708090;
@@ -16,3 +24,9 @@ h3 {
   text-decoration: none;
 }
 
+table {
+  background-color: white;
+  border: 1px solid black;
+  margin-left:auto;
+  margin-right:auto;   
+}
