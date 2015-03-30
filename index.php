@@ -45,7 +45,9 @@ class csvlists {
                                 $entryReq = $i - 1;
                                 echo $i.': ';
 
-                        print_r('<a href="http://web.njit.edu/~dmo7/is218/test/index.php?record=' . $entryReq . '">'.$names[$i-1].'</a>');
+                        print_r('<a 
+href="http://web.njit.edu/~dmo7/is218/project1/index.php?record=' . 
+$entryReq . '">'.$names[$i-1].'</a>');
                         echo '<br><br>';
                         }
                 }
