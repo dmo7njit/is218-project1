@@ -36,18 +36,19 @@ class csvlists {
 
                 if(empty($_GET)) {
 
-                        echo '<h1>  Integrated Post Secondary Educational Data System </h1>';
-                        echo '<h3> For more information on a school click the name.</h3>';
-                        echo '<br>';
-
-                        foreach($records as $record) {
-                                $i++;
-                                $entryReq = $i - 1;
-                                echo $i.': ';
-
-                        print_r('<a href="http://web.njit.edu/~dmo7/is218/project1/index.php?record=' .$entryReq . '">'.$names[$i-1].'</a>');
-                        echo '<br><br>';
+                        echo '<h1> Integrated Post Secondary Educational Data System </h1>';
+			echo '<h3> For more information on a school click the name.</h3>';
+			echo '<table id="list1">';
+			foreach($records as $record) {
+				echo "<tr>";
+				$i++;
+				$entryReq = $i - 1;
+				echo "<th>";
+				echo $i.': ';				
+				print_r('<a href="http://web.njit.edu/~dmo7/is218/project1/index.php?record='.$entryReq.'">'.$names[$i-1].'</a>');
+				echo "</th></tr>";
                         }
+			echo "</table>"; 
                 }
  
                         $record = $records[$_GET['record']];
