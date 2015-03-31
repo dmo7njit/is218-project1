@@ -37,16 +37,16 @@ class csvlists {
                 if(empty($_GET)) {
 
                         echo '<h1> Integrated Post Secondary Educational Data System </h1>';
-			echo '<h3> For more information on a school click the name.</h3>';
-			echo '<table id="list1">';
-			foreach($records as $record) {
-				echo "<tr>";
-				$i++;
-				$entryReq = $i - 1;
-				echo "<th>";
-				echo $i.': ';				
-				print_r('<a href="http://web.njit.edu/~dmo7/is218/project1/index.php?record='.$entryReq.'">'.$names[$i-1].'</a>');
-				echo "</th></tr>";
+						echo '<br>';
+						echo '<table id="list1">';
+						foreach($records as $record) {
+							echo "<tr>";
+							$i++;
+							$entryReq = $i - 1;
+							echo "<th>";				
+							print_r($i.': '.$names[$i-1]);
+							print_r('<a href="http://web.njit.edu/~dmo7/is218/project1/index.php?record='.$entryReq.'">Click for more information.</a>');
+							echo "</th></tr>";
                         }
 			echo "</table>"; 
                 }
@@ -68,7 +68,7 @@ class csvlists {
 
                                 
         $newfile = new csvlists();
-        $newfile-> csvwork('hd2013.csv', true);
+        $newfile-> csvwork('hd2013_short.csv', true);
                                 
 ?>
 </body>
